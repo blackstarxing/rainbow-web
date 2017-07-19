@@ -38,14 +38,9 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -67,4 +62,21 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
+} else {
+  module.exports.devServer={
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    host:'0.0.0.0',
+    disableHostCheck: true,
+    proxy: {
+      '/api': {
+          target: 'http://172.16.10.3:8777',
+          pathRewrite: {'^/api' : ''},
+        // changeOrigin: true,
+        secure: false
+      }
+    }
+  },
+  module.exports.devtool = '#eval-source-map'
 }
