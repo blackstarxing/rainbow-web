@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Rainbow from './rainbow.vue'
-import test from './views/test.vue'
-import test1 from './views/test1.vue'
+import index from './views/index.vue'
+import recharge from './views/recharge.vue'
 
 import VueRouter from 'vue-router' 
 import VueResource from 'vue-resource' 
@@ -15,15 +15,15 @@ const router = new VueRouter({
   // base: __dirname,
   routes: [
     {
-      path: '/test',
-      component: test
+      path: '/index',
+      component: index
     },
      {
-      path: '/test1',
-      component: test1
+      path: '/recharge',
+      component: recharge
     },
     
-    { path: '*', redirect: '/test'}
+    { path: '*', redirect: '/index'}
   ]
 })
 
