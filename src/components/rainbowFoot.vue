@@ -12,9 +12,12 @@
 		width: 100%;
 		opacity: 0.5;
 		font-size: 14px;
-		color: #FFFFFF;
+		color: #999;
 		letter-spacing: -0.34px;
 		line-height: 32px;
 		text-align: center;
+	}
+	.ft-landing{
+		color:#fff;
 	}
 </style>
