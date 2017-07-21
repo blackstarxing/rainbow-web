@@ -14,7 +14,7 @@
 	.g-hd{
 		padding:13px 0;
 		height: 54px;
-		background: rgba(255,255,255,0.15);
+		background: rgba(255,255,255,1);
 	}
 	.g-hd .f-fl{
 		background: url(../../static/images/logo.png) no-repeat;
@@ -31,6 +31,9 @@
 		cursor: pointer;
 		vertical-align: middle;
 	}	
+	.hd-landing{
+		background: rgba(255,255,255,0.15);
+	}
 	.hd-landing span{
 		color:#fff;
 	}
