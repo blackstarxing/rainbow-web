@@ -7,8 +7,6 @@
 </template>
 <style>
 	.g-ft{
-		position: fixed;
-		bottom: 10px;
 		width: 100%;
 		opacity: 0.5;
 		font-size: 14px;
@@ -16,8 +14,11 @@
 		letter-spacing: -0.34px;
 		line-height: 32px;
 		text-align: center;
+		padding:15px 0;
 	}
 	.ft-landing{
 		color:#fff;
+		position: fixed;
+		bottom: 0;
 	}
 </style>

@@ -47,7 +47,7 @@
 </script>
 <style>
 	.landing{
-		height: 100%;
+		height: 100vh;
 		background: url('../../static/images/bg.png') top center no-repeat;
 		background-size:cover;
 	}

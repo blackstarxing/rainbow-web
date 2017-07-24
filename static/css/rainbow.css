@@ -87,7 +87,7 @@ input:-ms-input-placeholder{font-size:24px;color:#A9A9A9;}         /* IE浏览�
 .bgc-btn{background: #FF2C66;}
 
 .g-doc{
-	height: 100%;
+	min-height: 100%;
 }
 .g-wrap{
 	width: 1100px;
