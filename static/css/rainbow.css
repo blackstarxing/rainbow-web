@@ -56,6 +56,7 @@ input:-ms-input-placeholder{font-size:24px;color:#A9A9A9;}         /* IE浏览�
 .fs-28{font-size: 28px;}
 .fs-30{font-size: 30px;}
 .fs-32{font-size: 32px;}
+.fs-36{font-size: 36px;}
 
 /*color*/
 .fc-bk{color:#000;}
@@ -69,12 +70,18 @@ input:-ms-input-placeholder{font-size:24px;color:#A9A9A9;}         /* IE浏览�
 .fc-81{color:#818181;}
 /*登录红*/
 .fc-login{color: #FF2366;}
-/*支付金额红*/
+/*灰黑色*/
 .fc-pay{color:#00152A;}
 /*id登录灰*/
 .fc-idLogin{color: #5D686C;}
 /*灰*/
 .fc-a9{color:#A9A9A9;}
+/*浅灰色*/
+.fc-ltgrey{color: #B8C1C6;}
+/*微信扫码支付 灰*/
+.fc-codePay{color: #757E81;}
+/*支付成功 黑*/
+.fc-f15{color: #151515;}
 
 /*背景颜色*/
 /*白色*/

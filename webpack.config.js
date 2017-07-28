@@ -70,9 +70,10 @@ if (process.env.NODE_ENV === 'production') {
     host:'0.0.0.0',
     disableHostCheck: true,
     proxy: {
-      '/api': {
-          target: 'http://172.16.10.3:8777',
-          pathRewrite: {'^/api' : ''},
+      '/webapi': {
+          target: 'http://172.16.10.134:8080',
+          // target: 'http://118.190.21.195:39999',
+          pathRewrite: {'^/webapi' : ''},
         // changeOrigin: true,
         secure: false
       }
