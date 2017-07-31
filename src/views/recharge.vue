@@ -134,7 +134,7 @@
 	            	// {"candy":28800,"cash":288,"id":5,"first_charge_value":2880},
 	            	// {"candy":69800,"cash":698,"id":6,"first_charge_value":6880},
 	            ],
-	            payCash:6,
+	            payCash:'',
 	            //tab当前位置
 	    		isCur:0,
 	            //选中提示
@@ -187,6 +187,7 @@
 
 	         	_this.$http.get('/webapi/pay/websiteSweets').then(function(response) {
 	                _this.sweetList = response.data.object;
+	                _this.payCash = response.data.object[0].rmb;
 	            },function(response) {
 	                layer.open({
 						content: '网络异常,请检查后重试',
