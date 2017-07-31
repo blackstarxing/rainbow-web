@@ -173,7 +173,7 @@
 	         	var userId = window.localStorage.getItem('userId');
 	         	var nickname = window.localStorage.getItem('nickname');
 	         	var icon = window.localStorage.getItem('icon');
-	         	if(userId && nickname && icon){
+	         	if(userId && nickname){
 	         		_this.login = false;
 	         		_this.logined = true;
 	         		_this.loginMask = false;
@@ -262,7 +262,7 @@
 	                		_this.loginMask = false;
 		                   	_this.login = false;
 		                   	_this.logined = true;
-		                   	_this.loginedIcon = response.data.object.icon;
+		                   	_this.loginedIcon = response.data.object.icon?response.data.object.icon:'';
 		                   	_this.loginedUserId = response.data.object.id;
 		                   	_this.loginedNickname = response.data.object.nickname;
 		                   	window.localStorage.setItem("userId", _this.loginedUserId);
