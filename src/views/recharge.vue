@@ -40,14 +40,14 @@
        		 		<div v-if='is_first == 1'>
        		 			<div v-for='(valuelist,index) in sweetList' :id='valuelist.id' :class="{active:isCur==index}" class="u-recharge-item bdc-b5 f-fl" @click='switchCash(index,valuelist.rmb)'>
 	       		 			<div class="first-award fc-wt fs-13">首充奖励{{valuelist.first_charge_value}}</div>
-	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span>彩虹糖</div>
+	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span><span class="fs-14 fc-f74">彩虹糖</span></div>
 	       		 			<div class="recharge-item-cash fs-20 fc-bk">￥{{valuelist.rmb}}元</div>
 	       		 			<div v-show='rechargeClue' class="recharge-clue"></div>
        		 			</div>
        		 		</div>
        		 		<div  v-else-if='is_first != 1'>
        		 			<div v-for='(valuelist,index) in sweetList' :id='valuelist.id' :class="{active:isCur==index}" class="u-recharge-item bdc-b5 f-fl" @click='switchCash(index,valuelist.rmb)'>
-	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.candy}}</span>彩虹糖</div>
+	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.candy}}</span><span class="fs-14 fc-f74">彩虹糖</span></div>
 	       		 			<div class="recharge-item-cash fs-20 fc-bk">￥{{valuelist.rmb}}元</div>
 	       		 			<div class="choose"></div>
        		 			</div>
@@ -59,14 +59,14 @@
        		 		<div v-if='is_first == 1'>
        		 			<div v-for='(valuelist,index) in sweetList' :id='valuelist.id' :class="{active:isCur==index}" class="u-recharge-item bdc-b5 f-fl" @click='switchCash(index,valuelist.rmb)'>
 	       		 			<div class="first-award fc-wt fs-13">首充奖励{{valuelist.first_charge_value}}</div>
-	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span>彩虹糖</div>
+	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span><span class="fs-14 fc-f74">彩虹糖</span></div>
 	       		 			<div class="recharge-item-cash fs-20 fc-bk">￥{{valuelist.rmb}}元</div>
 	       		 			<div v-show='rechargeClue' class="recharge-clue"></div>
        		 			</div>
        		 		</div>
        		 		<div  v-else-if='is_first != 1'>
        		 			<div v-for='(valuelist,index) in sweetList' :id='valuelist.id' :class="{active:isCur==index}" class="u-recharge-item bdc-b5 f-fl" @click='switchCash(index,valuelist.rmb)'>
-	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span>彩虹糖</div>
+	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span><span class="fs-14 fc-f74">彩虹糖</span></div>
 	       		 			<div class="recharge-item-cash fs-20 fc-bk">￥{{valuelist.rmb}}元</div>
 	       		 			<div class="choose"></div>
        		 			</div>
@@ -138,7 +138,6 @@
 	    		isCur:0,
 	            //选中提示
 	            rechargeClue:false,
-
 	            // 登录之前
 	            login:true,
 	            // 登录之后
@@ -163,6 +162,8 @@
 	        	// 微信订单号
 	        	outTradeNo:'',
 	        	outTradeNoAli:'111',
+	        	// 轮循定时器
+	        	time:'',
 	        }
 	    },
 	    mounted: function () {
@@ -202,7 +203,6 @@
 					_this.$http.get('/webapi/pay/rechargeOrder',{params:{userId:userId,outTradeNo:_this.outTradeNoAli}}).then(function(response){
 						if(response.data.code == 0){
 							if(response.data.object.status == 1){
-								clearInterval(timer);
 								_this.paySuccessMask = true;
 								console.log('success');
 							}else{
@@ -220,7 +220,6 @@
 							content: '网络异常,请检查后重试',
 							scrollbar: false
 						});
-						clearInterval(timer);
 				   });
 				}else{
 					console.log('payAlipay');
@@ -239,6 +238,7 @@
 	    	payMaskClose:function(){
 	    		var _this = this;
 	    		_this.payMask = false;
+	    		clearInterval(_this.time);
 	    	},
 	    	paySuccessClose:function(){
 	    		var _this = this;
@@ -344,16 +344,16 @@
 			                   	_this.outTradeNo = response.data.object.outTradeNo;
 
 			                   	 //进行轮询
-			                   	 var time;
 			                   	 var parms = {};
 			                   	 parms.userId = userId;
 			                   	 parms.outTradeNo = _this.outTradeNo;
-			                   	 time = setInterval(function(){
+			                   	 _this.time = setInterval(function(){
 			                   	 	_this.$http.get('/webapi/pay/rechargeOrder',{params:parms}).then(function(response){
 			                   	 		if(response.data.code == 0){
 			                   	 			if(response.data.object.status == 1){
-			                   	 				clearInterval(time);
+			                   	 				clearInterval(_this.time);
 			                   	 				_this.paySuccessMask = true;
+			                   	 				_this.payMask = false;
 			                   	 				console.log('success');
 			                   	 				// clearInterval(time);
 			                   	 			}else{
@@ -364,18 +364,18 @@
 												content: '服务器出错',
 												scrollbar: false
 											});
-											clearInterval(time);
+											clearInterval(_this.time);
 			                   	 		}
 								    },function(response) {
 								        layer.open({
 											content: '网络异常,请检查后重试',
 											scrollbar: false
 										});
-										clearInterval(time);
+										clearInterval(_this.time);
 							        });
 			                   	 },5000);
 			                   	 setTimeout(function(){
-			                   	 	clearInterval(time);
+			                   	 	clearInterval(_this.time);
 			                   	 },300000);
 	       		 			}else{
 	       		 				layer.open({
@@ -390,7 +390,6 @@
 							});
 		                });
 					}else if(_this.type == 2){
-						var time;
 						var _this = this;
 		       		 	var productId = _this.isCur + 1;
 		       		 	var parm = {};
@@ -451,6 +450,8 @@
 		margin: 0 auto;
 	}
 	.m-recharge{
+		width: 1245px;
+		margin: 0 auto;
 		padding: 37px 60px 73px;
 		box-sizing: border-box;
 	}
@@ -506,15 +507,16 @@
 		min-width: 80px;
 		height: 49px;
 		line-height: 49px;
+		cursor: pointer;
 	}
 	.u-recharge-item{
 		position: relative;
 		width: 156px;
 		height: 163px;
-		margin: 37px 48px  0 0;
+		margin: 37px 45px  0 0;
 		padding: 0 16px;
 		text-align: center;
-		font-size: 0;
+		/*font-size: 0;*/
 		box-sizing: border-box;
 		cursor: pointer;
 	}
@@ -541,7 +543,7 @@
 	.recharge-item-candy{
 		width: 100%;
 		height: 110px;
-		line-height: 110px;
+		line-height: 136px;
 	}
 	.recharge-item-cash{
 		width: 100%;
@@ -576,6 +578,7 @@
 		width: 210px;
 		height: 54px;
 		margin-right: 24px;	
+		cursor: pointer;
 	}
 	.pay-wechat{
 		background: url(../../static/images/wechat.png) no-repeat;
@@ -624,10 +627,12 @@
 		right: 0;
 		margin: auto;
 		text-align: center;
+		cursor: pointer;
 		z-index: 999;
 	}
 	.m-idLogin-container{
 		padding: 87px 100px 124px;
+		cursor: pointer;
 	}
 	.m-idLogin-container,.m-pay-mask{
 		position: absolute;
