@@ -48,6 +48,7 @@ input:-ms-input-placeholder{font-size:24px;color:#A9A9A9;}         /* IE浏览�
 
 /*font*/
 .fs-13{font-size: 13px;}
+.fs-14{font-size: 14px;}
 .fs-15{font-size: 15px;}
 .fs-18{font-size: 18px;}
 .fs-20{font-size: 20px;}
@@ -69,19 +70,21 @@ input:-ms-input-placeholder{font-size:24px;color:#A9A9A9;}         /* IE浏览�
 
 .fc-81{color:#818181;}
 /*登录红*/
-.fc-login{color: #FF2366;}
+.fc-login{color:#FF2366;}
 /*灰黑色*/
 .fc-pay{color:#00152A;}
 /*id登录灰*/
-.fc-idLogin{color: #5D686C;}
+.fc-idLogin{color:#5D686C;}
 /*灰*/
 .fc-a9{color:#A9A9A9;}
 /*浅灰色*/
-.fc-ltgrey{color: #B8C1C6;}
+.fc-ltgrey{color:#B8C1C6;}
 /*微信扫码支付 灰*/
-.fc-codePay{color: #757E81;}
+.fc-codePay{color:#757E81;}
 /*支付成功 黑*/
-.fc-f15{color: #151515;}
+.fc-f15{color:#151515;}
+/*灰*/
+.fc-f74{color:#747474;}
 
 /*背景颜色*/
 /*白色*/
