@@ -398,7 +398,6 @@
 		       		 	// parm.productId = productId;
 		       		 	if(userId){
 		       		 		window.location.href = '/webapi/pay/websiteAlipay?userId='+userId+'&productId='+productId;
-							
 		       		 	}else{
 		       		 		layer.open({
 								content: '请登录',
@@ -421,6 +420,7 @@
 				window.localStorage.removeItem('icon');
 				window.localStorage.removeItem('userId');
 				window.localStorage.removeItem('nickname');
+				window.location.href = '/recharge';
        		 },
 	    },
 	    computed: {
