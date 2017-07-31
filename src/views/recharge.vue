@@ -420,7 +420,7 @@
 				window.localStorage.removeItem('icon');
 				window.localStorage.removeItem('userId');
 				window.localStorage.removeItem('nickname');
-				window.location.href = '/recharge';
+				window.location.href = '#/recharge';
        		 },
 	    },
 	    computed: {
