@@ -24,7 +24,8 @@
        		 	<div class="m-login bdc-btm" v-show='logined'>
 					<div class="g-bd1 f-cb">
 					    <div class="g-sd1">
-					    	<img  v-bind:src="loginedIcon" alt="没有图片">
+					    	<img v-if='loginedIcon != null || loginedIcon != undefined'  v-bind:src="loginedIcon" alt="没有图片">
+					    	<img v-else  src="../../static/images/defaultIcon.png" alt="没有图片">
 					    </div>
 					    <div class="g-mn1">
 						    <div class="g-mn1c" >
@@ -201,6 +202,7 @@
 		       	// parm.userId = userId;
 				if(_this.outTradeNoAli != null && _this.outTradeNoAli != ''){
 					_this.$http.get('/webapi/pay/rechargeOrder',{params:{userId:userId,outTradeNo:_this.outTradeNoAli}}).then(function(response){
+
 						if(response.data.code == 0){
 							if(response.data.object.status == 1){
 								_this.paySuccessMask = true;
