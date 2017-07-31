@@ -196,9 +196,9 @@
 	         	// 支付宝支付
 	         	_this.outTradeNoAli = this.$route.query.out_trade_no;
 	         	var productId = _this.isCur + 1;
-		       	var parm = {};
+		       	// var parm = {};
 		       	var userId = window.localStorage.getItem('userId');
-		       	parm.userId = userId;
+		       	// parm.userId = userId;
 				if(_this.outTradeNoAli != null && _this.outTradeNoAli != ''){
 					_this.$http.get('/webapi/pay/rechargeOrder',{params:{userId:userId,outTradeNo:_this.outTradeNoAli}}).then(function(response){
 						if(response.data.code == 0){
@@ -392,10 +392,10 @@
 					}else if(_this.type == 2){
 						var _this = this;
 		       		 	var productId = _this.isCur + 1;
-		       		 	var parm = {};
+		       		 	// var parm = {};
 		       		 	var userId = window.localStorage.getItem('userId');
-		       		 	parm.userId = userId;
-		       		 	parm.productId = productId;
+		       		 	// parm.userId = userId;
+		       		 	// parm.productId = productId;
 		       		 	if(userId){
 		       		 		window.location.href = '/webapi/pay/websiteAlipay?userId='+userId+'&productId='+productId;
 							
