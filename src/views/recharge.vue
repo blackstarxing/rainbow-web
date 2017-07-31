@@ -24,7 +24,7 @@
        		 	<div class="m-login bdc-btm" v-show='logined'>
 					<div class="g-bd1 f-cb">
 					    <div class="g-sd1">
-					    	<img v-if='loginedIcon != null || loginedIcon != undefined'  v-bind:src="loginedIcon" alt="没有图片">
+					    	<img v-if='loginedIcon'  v-bind:src="loginedIcon" alt="没有图片">
 					    	<img v-else  src="../../static/images/defaultIcon.png" alt="没有图片">
 					    </div>
 					    <div class="g-mn1">
@@ -89,7 +89,7 @@
        		 </div>
         </div>
         <rainbow-foot></rainbow-foot>
-            <!-- 彩虹ID登录 -->
+        <!-- 彩虹ID登录 -->
 		<div class="g-idLogin-mask" v-show='loginMask'>
 			<div class="m-idLogin-container bgc-wt">
 				<div class="u-mask-close" @click='maskClose'></div>
