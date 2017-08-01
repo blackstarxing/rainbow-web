@@ -126,14 +126,7 @@
 	    data () {
 	        return {
 	            is_first:1,
-	            sweetList:[
-	            	// {"candy":600,"cash":6,"id":1,"first_charge_value":600},
-	            	// {"candy":3000,"cash":30,"id":2,"first_charge_value":880},
-	            	// {"candy":8800,"cash":88,"id":3,"first_charge_value":1080},
-	            	// {"candy":18800,"cash":188,"id":4,"first_charge_value":1800},
-	            	// {"candy":28800,"cash":288,"id":5,"first_charge_value":2880},
-	            	// {"candy":69800,"cash":698,"id":6,"first_charge_value":6880},
-	            ],
+	            sweetList:[],
 	            payCash:'',
 	            //tab当前位置
 	    		isCur:0,
@@ -208,10 +201,6 @@
 							if(response.data.object.status == 1){
 								_this.paySuccessMask = true;
 								window.history.replaceState(null, "充值", "#/recharge");
-								// setTimeout(function(){
-								// 	_this.paySuccessMask = false;
-								// 	window.location.href = '#/recharge';
-								// },3000);
 								console.log('success');
 							}else{
 								console.log('error');
@@ -225,7 +214,6 @@
 								content: '服务器出错',
 								scrollbar: false
 							});
-							// clearInterval(time);
 						}
 				   },function(response) {
 				       layer.open({
@@ -259,11 +247,9 @@
 	    		window.location.href = '#/recharge';
 	    	},
 	        switchCash:function(index,value){
-	        	// console.log(index);
 	        	var _this = this;
 	        	_this.isCur = index;
 	        	_this.payCash = value;
-	        	// _this.rechargeClue = true;	
        		},
        		 // 确认登录
        		confirmLogin:function(){
@@ -329,7 +315,6 @@
        		 payWechat:function(){
        		 	$('.pay-alipay').removeClass('active');
        		 	$('.pay-wechat').addClass('active');
-       		 	// $('.confirm-pay').removeClass('bgc-confirm').addClass('bgc-btn');
        		 	var _this = this;
        		 	_this.type = 1;
        		 },
@@ -337,7 +322,6 @@
        		 payAlipay:function(){
        		 	$('.pay-wechat').removeClass('active');
        		 	$('.pay-alipay').addClass('active');
-       		 	// $('.confirm-pay').removeClass('bgc-confirm').addClass('bgc-btn');
        		 	var _this = this;
        		 	_this.type = 2;
        		 },
@@ -407,10 +391,7 @@
 					}else if(_this.type == 2){
 						var _this = this;
 		       		 	var productId = _this.isCur + 1;
-		       		 	// var parm = {};
 		       		 	var userId = window.localStorage.getItem('userId');
-		       		 	// parm.userId = userId;
-		       		 	// parm.productId = productId;
 		       		 	if(userId){
 		       		 		window.location.href = '/webapi/pay/websiteAlipay?userId='+userId+'&productId='+productId;
 		       		 	}else{
@@ -531,7 +512,6 @@
 		margin: 37px 45px  0 0;
 		padding: 0 16px;
 		text-align: center;
-		/*font-size: 0;*/
 		box-sizing: border-box;
 		cursor: pointer;
 	}
