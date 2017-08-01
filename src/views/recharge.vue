@@ -209,6 +209,7 @@
 							if(response.data.object.status == 1){
 								_this.paySuccessMask = true;
 								if(_this.paySuccessMask == false || window.location.reload()){
+									alert(_this.paySuccessMask);
 									// _this.paySuccessMask = false;
 									window.location.href = '#/recharge';
 								}
