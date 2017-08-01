@@ -194,17 +194,6 @@
 						scrollbar: false
 					});
 	            });
-
-	         	window.onbeforeunload = function() {   
-		            var n = window.event.screenX - window.screenLeft;   
-		            var b = n > document.documentElement.scrollWidth-20;   
-		            if(b && window.event.clientY < 0 || window.event.altKey){   
-		               
-		            }else{
-		                window.location.href = '#/recharge';   
-		            }
-		        }  
-
 	         	// 支付宝支付
 	         	_this.outTradeNoAli = this.$route.query.out_trade_no;
 	         	var productId = _this.isCur + 1;
@@ -217,6 +206,7 @@
 						if(response.data.code == 0){
 							if(response.data.object.status == 1){
 								_this.paySuccessMask = true;
+								window.history.pushState(null, null, "＃/recharge");
 								// setTimeout(function(){
 								// 	_this.paySuccessMask = false;
 								// 	window.location.href = '#/recharge';
