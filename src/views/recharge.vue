@@ -203,7 +203,7 @@
 								window.history.replaceState(null, "充值", "#/recharge");
 								console.log('success');
 
-								_this.$http.get('/webapi/pay/myGold').then(function(response) {
+								_this.$http.get('/webapi/pay/myGold',{params:{userId:_this.loginedUserId}}).then(function(response) {
 			                   		if(response.data.code == 0){
 			                   			_this.sweetList = response.data.object.sweetList;
 			                   			_this.is_first = response.data.object.is_first;
@@ -288,7 +288,7 @@
 		                   	window.localStorage.setItem("nickname", _this.loginedNickname);
 		                   	window.localStorage.setItem("icon", _this.loginedIcon);
 
-		                   	_this.$http.get('/webapi/pay/myGold').then(function(response) {
+		                   	_this.$http.get('/webapi/pay/myGold',{params:{userId:_this.loginedUserId}}).then(function(response) {
 		                   		if(response.data.code == 0){
 		                   			_this.sweetList = response.data.object.sweetList;
 		                   			_this.is_first = response.data.object.is_first;
@@ -375,7 +375,7 @@
 			                   	 				_this.payMask = false;
 			                   	 				console.log('success');
 
-							                   	_this.$http.get('/webapi/pay/myGold').then(function(response) {
+							                   	_this.$http.get('/webapi/pay/myGold',{params:{userId:_this.loginedUserId}}).then(function(response) {
 							                   		if(response.data.code == 0){
 							                   			_this.sweetList = response.data.object.sweetList;
 							                   			_this.is_first = response.data.object.is_first;
