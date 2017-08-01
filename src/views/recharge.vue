@@ -388,6 +388,7 @@
 							        });
 			                   	 },5000);
 			                   	 setTimeout(function(){
+			                   	 	_this.payMask = false;
 			                   	 	clearInterval(_this.time);
 			                   	 },300000);
 	       		 			}else{
