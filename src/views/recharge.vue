@@ -208,9 +208,7 @@
 						if(response.data.code == 0){
 							if(response.data.object.status == 1){
 								_this.paySuccessMask = true;
-								if(_this.paySuccessMask == false || window.location.reload()){
-									alert(_this.paySuccessMask);
-									// _this.paySuccessMask = false;
+								if(window.location.reload()){
 									window.location.href = '#/recharge';
 								}
 								console.log('success');
@@ -257,6 +255,7 @@
 	    	paySuccessClose:function(){
 	    		var _this = this;
 	    		_this.paySuccessMask = false;
+	    		window.location.href = '#/recharge';
 	    	},
 	        switchCash:function(index,value){
 	        	// console.log(index);
