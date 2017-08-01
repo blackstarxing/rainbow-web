@@ -170,6 +170,7 @@
 	    mounted: function () {
 	         this.$nextTick(function () {
 	         	var _this = this;
+	         	
 	         	var userId = window.localStorage.getItem('userId');
 	         	var nickname = window.localStorage.getItem('nickname');
 	         	var icon = window.localStorage.getItem('icon');
@@ -207,9 +208,17 @@
 						if(response.data.code == 0){
 							if(response.data.object.status == 1){
 								_this.paySuccessMask = true;
+								if(_this.paySuccessMask == false || window.location.reload()){
+									// _this.paySuccessMask = false;
+									window.location.href = '#/recharge';
+								}
 								console.log('success');
 							}else{
 								console.log('error');
+								layer.open({
+									content: '支付正在审核',
+									scrollbar: false
+								});
 							}
 						}else{
 							layer.open({
@@ -233,6 +242,7 @@
 	    	rechargeLogin:function(){
 	    		var _this = this;
 	    		_this.loginMask = true;
+	    		_this.userId = '';
 	    	},
 	    	maskClose:function(){
 	    		var _this = this;
