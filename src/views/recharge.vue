@@ -94,7 +94,7 @@
 			<div class="m-idLogin-container bgc-wt">
 				<div class="u-mask-close" @click='maskClose'></div>
 				<div class=" fc-idLogin fs-30">彩虹ID登录</div>
-				<input class="u-idLogin-ipt fc-b3 fs-24" type="number" placeholder="请输入彩虹id" onkeyup="this.value=this.value.replace(/\D/g,'')" oninput="if(value.length>7)value=value.slice(0,7);" v-model='userId'>
+				<input class="u-idLogin-ipt fc-b3 fs-24" type="text" placeholder="请输入彩虹id" onkeyup="this.value=this.value.replace(/\D/g,'')" oninput="if(value.length>7)value=value.slice(0,7);" v-model='userId'>
 				<div class="u-idlogin-error fs-22 fc-login">{{loginErrorClue}}</div>
 				<button class="u-idLogin-btn fs-32 fc-wt bgc-btn" @click='confirmLogin'>确认</button>
 			</div>
@@ -202,6 +202,27 @@
 								_this.paySuccessMask = true;
 								window.history.replaceState(null, "充值", "#/recharge");
 								console.log('success');
+
+								_this.$http.get('/webapi/pay/myGold').then(function(response) {
+			                   		if(response.data.code == 0){
+			                   			_this.sweetList = response.data.object.sweetList;
+			                   			_this.is_first = response.data.object.is_first;
+			                   		}else if(replace.data.code == -5){
+			                   			layer.open({
+										  content: '参数出错',
+										  scrollbar: false
+										});
+			                   		}else{
+			                   			layer.open({
+										  content: '服务器出错',
+										  scrollbar: false
+										});
+			                   		}
+					                
+					            },function(response) {
+					                console.log(response);
+					            });
+
 							}else{
 								console.log('error');
 								layer.open({
@@ -353,7 +374,27 @@
 			                   	 				_this.paySuccessMask = true;
 			                   	 				_this.payMask = false;
 			                   	 				console.log('success');
-			                   	 				// clearInterval(time);
+
+							                   	_this.$http.get('/webapi/pay/myGold').then(function(response) {
+							                   		if(response.data.code == 0){
+							                   			_this.sweetList = response.data.object.sweetList;
+							                   			_this.is_first = response.data.object.is_first;
+							                   		}else if(replace.data.code == -5){
+							                   			layer.open({
+														  content: '参数出错',
+														  scrollbar: false
+														});
+							                   		}else{
+							                   			layer.open({
+														  content: '服务器出错',
+														  scrollbar: false
+														});
+							                   		}
+									                
+									            },function(response) {
+									                console.log(response);
+									            });
+
 			                   	 			}else{
 			                   	 				console.log('error');
 			                   	 			}
