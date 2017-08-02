@@ -38,19 +38,12 @@
        		 	<!-- 充值金额 -->
        		 	<div class="m-recharge-item f-cb" v-show='login'>
        		 		<div class="fs-18 fc-b6">选择充值金额</div>
-       		 		<div v-if='is_first == 1'>
+       		 		<div >
        		 			<div v-for='(valuelist,index) in sweetList' :id='valuelist.id' :class="{active:isCur==index}" class="u-recharge-item bdc-b5 f-fl" @click='switchCash(index,valuelist.rmb)'>
 	       		 			<div class="first-award fc-wt fs-13">首充奖励{{valuelist.first_charge_value}}</div>
 	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.value}}</span><span class="fs-14 fc-f74">彩虹糖</span></div>
 	       		 			<div class="recharge-item-cash fs-20 fc-bk">￥{{valuelist.rmb}}元</div>
 	       		 			<div v-show='rechargeClue' class="recharge-clue"></div>
-       		 			</div>
-       		 		</div>
-       		 		<div  v-else-if='is_first != 1'>
-       		 			<div v-for='(valuelist,index) in sweetList' :id='valuelist.id' :class="{active:isCur==index}" class="u-recharge-item bdc-b5 f-fl" @click='switchCash(index,valuelist.rmb)'>
-	       		 			<div class="recharge-item-candy bdc-grey"><span class="fc-bk fs-24">{{valuelist.candy}}</span><span class="fs-14 fc-f74">彩虹糖</span></div>
-	       		 			<div class="recharge-item-cash fs-20 fc-bk">￥{{valuelist.rmb}}元</div>
-	       		 			<div class="choose"></div>
        		 			</div>
        		 		</div>
        		 	</div>
@@ -166,6 +159,7 @@
 	         	var userId = window.localStorage.getItem('userId');
 	         	var nickname = window.localStorage.getItem('nickname');
 	         	var icon = window.localStorage.getItem('icon');
+	         	_this.is_first = window.localStorage.getItem('isFirst');
 	         	if(userId && nickname){
 	         		_this.login = false;
 	         		_this.logined = true;
@@ -292,6 +286,7 @@
 		                   		if(response.data.code == 0){
 		                   			_this.sweetList = response.data.object.sweetList;
 		                   			_this.is_first = response.data.object.is_first;
+		                   			window.localStorage.setItem("isFirst", _this.is_first);
 		                   		}else if(replace.data.code == -5){
 		                   			layer.open({
 									  content: '参数出错',
